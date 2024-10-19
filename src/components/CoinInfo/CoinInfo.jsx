@@ -35,7 +35,7 @@ export default function CoinInfo({
 
   return (
     <div className="flex flex-col items-center justify-center md:px-8 mt-6 w-full">
-      {/* filters */}
+      {/* filter */}
       <div className="flex justify-between items-center w-full">
         <select
           id="filterTime"
