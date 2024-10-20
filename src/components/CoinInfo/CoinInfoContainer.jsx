@@ -16,8 +16,6 @@ export default function CoinInfoContainer({ coinId }) {
     currency,
   ] = useCoinChartData(coinId);
 
-  console.log()
-
   if (isError) {
     console.error(error);
     return <div>Error loading data</div>;
