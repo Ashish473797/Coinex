@@ -17,7 +17,7 @@ export default function Navbar() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -44,13 +44,13 @@ export default function Navbar() {
           </div>
         </div>
         <div className="navbar-center">
-          <Link to="/" className="btn btn-ghost text-xl">Coinex</Link>
+          <Link to="/" className="text-xl btn btn-ghost">Coinex</Link>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,7 +67,7 @@ export default function Navbar() {
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

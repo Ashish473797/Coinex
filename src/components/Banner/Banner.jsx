@@ -8,7 +8,7 @@ export default function Banner() {
       style={{ backgroundImage: `url(${banner})` }}
     >
       <div className="container mx-auto text-center">
-        <h1 className="text-5xl font-bold mb-8">Crypto Tracker</h1>
+        <h1 className="mb-8 text-5xl font-bold">Crypto Tracker</h1>
         <p>Get all info regarding cryptocurrencies.</p>
       </div>
     </div>

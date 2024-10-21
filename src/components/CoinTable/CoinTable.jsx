@@ -45,9 +45,9 @@ export default function CoinTable() {
 
   return (
     <>
-      <div className="my-5 flex flex-col items-center justify-center gap-5 container mx-auto">
+      <div className="container flex flex-col items-center justify-center gap-5 mx-auto my-5">
         {/* header  */}
-        <div className="w-full bg-yellow-400 text-black flex py-4 px-2 font-semibold items-center justify-between">
+        <div className="flex items-center justify-between w-full px-2 py-4 font-semibold text-black bg-yellow-400">
           <div className="basis-[40%]">Coin</div>
           <div className="basis-[20%]">Price</div>
           <div className="basis-[25%] flex justify-center">24h Change</div>
@@ -65,9 +65,9 @@ export default function CoinTable() {
             itemContent={(index, coin) => {
               return (
                 <div
-                  key={coin?.id}
+                  key={index}
                   onClick={() => handleCoinRedirect(coin?.id)}
-                  className="w-full text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer"
+                  className="flex items-center justify-between w-full px-2 py-4 font-semibold text-white cursor-pointer"
                 >
                   <div className="flex items-center justify-start gap-4 basis-[40%]">
                     <div className="w-[5rem] h-[5rem]">

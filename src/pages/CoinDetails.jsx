@@ -35,23 +35,23 @@ export default function CoinDetails() {
       ) : (
         <div className="flex flex-col md:flex-row">
           {/* right section  */}
-          <div className="md:w-1/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-gray-500">
+          <div className="flex flex-col items-center w-full mt-6 border-r-2 border-gray-500 md:w-1/3 md:mt-0">
             <img
               src={coin?.image?.large}
-              className="h-52 mb-5"
+              className="mb-5 h-52"
               loading="eager"
               alt={coin?.name}
             />
-            <h1 className="text-4xl font-bold mb-5">{coin?.name}</h1>
+            <h1 className="mb-5 text-4xl font-bold">{coin?.name}</h1>
             <p className="w-full px-6 py-4 text-justify">
-              {coin && parse(coin.description?.en)}
+              {coin && parse(coin?.description?.en)}
             </p>
-            <div className="w-full flex flex-col md:flex-row md:justify-between px-6">
-              <div className="flex items-center mb-4  md:mb-0">
+            <div className="flex flex-col w-full px-6 md:flex-row md:justify-between">
+              <div className="flex items-center mb-4 md:mb-0">
                 <h2 className="text-xl font-bold">Rank</h2>
                 <span className="ml-3 text-xl">{coin?.market_cap_rank}</span>
               </div>
-              <div className="flex items-center mb-4  md:mb-0">
+              <div className="flex items-center mb-4 md:mb-0">
                 <h2 className="text-xl font-bold text-yellow-400">
                   Current Price
                 </h2>
@@ -63,7 +63,7 @@ export default function CoinDetails() {
           </div>
 
           {/* left section  */}
-          <div className="md:w-2/3 w-full p-6">
+          <div className="w-full p-6 md:w-2/3">
             <CoinInfoContainer coinId={"bitcoin"} />
           </div>
         </div>

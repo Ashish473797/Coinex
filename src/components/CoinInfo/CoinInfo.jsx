@@ -34,16 +34,16 @@ export default function CoinInfo({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center md:px-8 mt-6 w-full">
+    <div className="flex flex-col items-center justify-center w-full mt-6 md:px-8">
       {/* filter */}
-      <div className="flex justify-between items-center w-full">
+      <div className="flex items-center justify-between w-full">
         <select
           id="filterTime"
-          className="select select-bordered w-full max-w-xs"
+          className="w-full max-w-xs select select-bordered"
           onChange={handleOptionChange}
           defaultValue={days}
         >
-          {chartDays.map((day, index) => (
+          {chartDays?.map((day, index) => (
             <option key={index} value={day.value}>
               {day.label}
             </option>
@@ -52,7 +52,7 @@ export default function CoinInfo({
 
         <div className="form-control">
           <label className="cursor-pointer label">
-            <span className="label-text mr-2">Daily Data</span>
+            <span className="mr-2 label-text">Daily Data</span>
             <input
               id="daily"
               type="checkbox"
@@ -68,7 +68,7 @@ export default function CoinInfo({
       {/*  line chart */}
       <Line
         data={{
-          labels: chartData.prices.map((coinTime) => {
+          labels: chartData?.prices?.map((coinTime) => {
             let date = new Date(coinTime[0]);
             let time =
               date.getHours() > 12
@@ -80,8 +80,8 @@ export default function CoinInfo({
             {
               label: `Price (Past ${days} ${
                 days == 1 ? "Day" : "Days"
-              } in ${currency.toUpperCase()})`,
-              data: chartData.prices.map((coinPrice) => coinPrice[1]),
+              } in ${currency?.toUpperCase()})`,
+              data: chartData?.prices?.map((coinPrice) => coinPrice[1]),
             },
           ],
         }}
@@ -89,11 +89,11 @@ export default function CoinInfo({
           responsive: true,
         }}
       />
-       <div className="text-2xl mt-24"> Market Cap Chart </div>
+       <div className="mt-24 text-2xl"> Market Cap Chart </div>
       {/* bar chart  */}
       <Bar
         data={{
-          labels: chartData.market_caps.map((coinTime) => {
+          labels: chartData?.market_caps?.map((coinTime) => {
             let date = new Date(coinTime[0]);
             let time =
               date.getHours() > 12
@@ -103,10 +103,10 @@ export default function CoinInfo({
           }),
           datasets: [
             {
-              label: `Price (Past ${days} ${
+              label: `Market Cap (Past ${days} ${
                 days == 1 ? "Day" : "Days"
-              } in ${currency.toUpperCase()})`,
-              data: chartData.market_caps.map((coinPrice) => coinPrice[1]),
+              } in ${currency?.toUpperCase()})`,
+              data: chartData?.market_caps?.map((coinPrice) => coinPrice[1]),
             },
           ],
         }}
