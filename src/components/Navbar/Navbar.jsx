@@ -8,15 +8,13 @@ import { fetchSearchedCoin } from "../../services/fetchSearchedCoin";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  
+
   const { setCurrency } = store();
   const { currency } = store();
-  
+
   const [searchedTerm, setSearchedTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
-  
-  // const [isFocused, setIsFocused] = useState(false);
-  
+
   const debouncedFetch = useMemo(
     () =>
       debounce((term) => {
@@ -108,8 +106,6 @@ export default function Navbar() {
             placeholder="Search"
             value={searchedTerm}
             onChange={handleSearchChange}
-            // onFocus={() => setIsFocused(true)}
-            // onBlur={() => setIsFocused(false)}
             className="input input-bordered md:w-auto;"
           />
           {isLoading && (
@@ -118,7 +114,7 @@ export default function Navbar() {
             </div>
           )}
           {searchList.length > 0 && (
-            <div className="overflow-y-auto overflow-x-hidden absolute w-full h-[400px] top-[64px] px-4 py-3 bg-[#282A36] rounded-md z-10">
+            <div className="overflow-y-auto overflow-x-hidden absolute w-full h-[400px] top-[64px] px-4 py-3 bg-[#282A36] rounded-md z-10 shadow-lg border border-gray-500">
               <ul className="text-slate-400">
                 {searchList.map((coin) => (
                   <li
