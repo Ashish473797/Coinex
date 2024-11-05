@@ -19,7 +19,7 @@ export default function Navbar() {
     () =>
       debounce((term) => {
         refetch({ queryKey: ["searchData", term] });
-      }, 300),
+      }, 700),
     []
   );
 
