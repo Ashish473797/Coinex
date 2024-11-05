@@ -15,14 +15,6 @@ export default function Navbar() {
   const [searchedTerm, setSearchedTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
 
-  const debouncedFetch = useMemo(
-    () =>
-      debounce((term) => {
-        refetch({ queryKey: ["searchData", term] });
-      }, 700),
-    []
-  );
-
   const { isError, error, isLoading, data, refetch } = useQuery({
     queryKey: ["searchData", searchedTerm],
     queryFn: () => fetchSearchedCoin(searchedTerm),
@@ -31,11 +23,13 @@ export default function Navbar() {
     enabled: false,
   });
 
-  useEffect(() => {
-    if (data) {
-      setSearchList(data?.coins);
-    }
-  }, [data]);
+  const debouncedFetch = useMemo(
+    () =>
+      debounce((term) => {
+        refetch({ queryKey: ["searchData", term] });
+      }, 700),
+    []
+  );
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -48,6 +42,12 @@ export default function Navbar() {
       debouncedFetch.cancel();
     };
   }, [debouncedFetch]);
+
+  useEffect(() => {
+    if (data) {
+      setSearchList(data?.coins);
+    }
+  }, [data]);
 
   if (isError) {
     console.error(error);
