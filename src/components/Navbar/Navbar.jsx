@@ -15,7 +15,7 @@ export default function Navbar() {
   const [searchedTerm, setSearchedTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
   
-  const [isFocused, setIsFocused] = useState(false);
+  // const [isFocused, setIsFocused] = useState(false);
   
   const debouncedFetch = useMemo(
     () =>
@@ -108,8 +108,8 @@ export default function Navbar() {
             placeholder="Search"
             value={searchedTerm}
             onChange={handleSearchChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
+            // onFocus={() => setIsFocused(true)}
+            // onBlur={() => setIsFocused(false)}
             className="input input-bordered md:w-auto;"
           />
           {isLoading && (
@@ -117,8 +117,8 @@ export default function Navbar() {
               <p className="text-slate-400">Loading...</p>
             </div>
           )}
-          {isFocused && searchList.length > 0 && (
-            <div className="overflow-y-auto overflow-x-hidden absolute w-full h-[400px] top-[64px] px-4 py-3 bg-[#282A36] rounded-md">
+          {searchList.length > 0 && (
+            <div className="overflow-y-auto overflow-x-hidden absolute w-full h-[400px] top-[64px] px-4 py-3 bg-[#282A36] rounded-md z-10">
               <ul className="text-slate-400">
                 {searchList.map((coin) => (
                   <li
