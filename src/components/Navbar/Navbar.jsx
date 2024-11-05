@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import debounce from "lodash.debounce";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import store from "../../zustand/store";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect, useMemo } from "react";
@@ -9,6 +9,7 @@ import { fetchSearchedCoin } from "../../services/fetchSearchedCoin";
 export default function Navbar() {
   const { setCurrency } = store();
   const { currency } = store();
+  const navigate = useNavigate();
 
   const [searchedTerm, setSearchedTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
@@ -49,6 +50,10 @@ export default function Navbar() {
 
   if (isError) {
     console.error(error);
+  }
+
+  function handleCoinRedirect(coinId) {
+    navigate(`/details/${coinId}`);
   }
 
   return (
@@ -113,7 +118,8 @@ export default function Navbar() {
                 {searchList.map((coin) => (
                   <li
                     key={coin.id}
-                    className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-700"
+                    className="flex items-center gap-3 p-2 rounded-md cursor-pointer hover:bg-gray-700"
+                    onClick={() => handleCoinRedirect(coin?.id)}
                   >
                     <img
                       src={coin.thumb}
